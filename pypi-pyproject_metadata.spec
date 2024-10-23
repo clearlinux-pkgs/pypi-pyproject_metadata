@@ -6,10 +6,10 @@
 # autospec commit: f35655a
 #
 Name     : pypi-pyproject_metadata
-Version  : 0.8.1
-Release  : 14
-URL      : https://files.pythonhosted.org/packages/fa/24/47dc876eacddcf7125fe59cd26b064530c7e58655dae87f6928bf47aabaf/pyproject_metadata-0.8.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/fa/24/47dc876eacddcf7125fe59cd26b064530c7e58655dae87f6928bf47aabaf/pyproject_metadata-0.8.1.tar.gz
+Version  : 0.9.0
+Release  : 15
+URL      : https://files.pythonhosted.org/packages/c0/79/406a9f56c435caaaca4a1c66397e4f63ecd48a72a6c4fc1d9ecdaac66acb/pyproject_metadata-0.9.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/c0/79/406a9f56c435caaaca4a1c66397e4f63ecd48a72a6c4fc1d9ecdaac66acb/pyproject_metadata-0.9.0.tar.gz
 Summary  : PEP 621 metadata parsing
 Group    : Development/Tools
 License  : MIT
@@ -24,11 +24,12 @@ BuildRequires : pypi(flit_core)
 
 %description
 # pyproject-metadata
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pypa/pyproject-metadata/main.svg)](https://results.pre-commit.ci/latest/github/pypa/pyproject-metadata/main)
-[![checks](https://github.com/pypa/pyproject-metadata/actions/workflows/checks.yml/badge.svg)](https://github.com/FFY00/python-pyproject-metadata/actions/workflows/checks.yml)
-[![tests](https://github.com/pypa/pyproject-metadata/actions/workflows/tests.yml/badge.svg)](https://github.com/pypa/pyproject-metadata/actions/workflows/tests.yml)
-[![codecov](https://codecov.io/gh/pypa/pyproject-metadata/branch/main/graph/badge.svg?token=9chBjS1lch)](https://codecov.io/gh/pypa/pyproject-metadata)
-[![Documentation Status](https://readthedocs.org/projects/pyproject-metadata/badge/?version=latest)](https://pep621.readthedocs.io/en/latest/?badge=latest)
+[![pre-commit.ci status][pre-commit-badge]][pre-commit-link]
+[![checks][gha-checks-badge]][gha-checks-link]
+[![tests][gha-tests-badge]][gha-tests-link]
+[![codecov][codecov-badge]][codecov-link]
+[![Documentation Status][rtd-badge]][rtd-link]
+[![PyPI version][pypi-version]][pypi-link]
 
 %package license
 Summary: license components for the pypi-pyproject_metadata package.
@@ -59,10 +60,10 @@ python3 components for the pypi-pyproject_metadata package.
 
 
 %prep
-%setup -q -n pyproject_metadata-0.8.1
-cd %{_builddir}/pyproject_metadata-0.8.1
+%setup -q -n pyproject_metadata-0.9.0
+cd %{_builddir}/pyproject_metadata-0.9.0
 pushd ..
-cp -a pyproject_metadata-0.8.1 buildavx2
+cp -a pyproject_metadata-0.9.0 buildavx2
 popd
 
 %build
@@ -70,7 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1728579490
+export SOURCE_DATE_EPOCH=1729694045
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -116,6 +117,7 @@ export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-pyproject_metadata
 cp %{_builddir}/pyproject_metadata-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pyproject_metadata/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9 || :
+cp %{_builddir}/pyproject_metadata-%{version}/tests/packages/fulltext_license/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-pyproject_metadata/4339a5c41946d5ce6e23a8b8c4fff00d838d40c9 || :
 python3 -m installer --destdir=%{buildroot} dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
