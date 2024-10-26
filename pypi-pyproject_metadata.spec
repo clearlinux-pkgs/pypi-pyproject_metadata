@@ -7,7 +7,7 @@
 #
 Name     : pypi-pyproject_metadata
 Version  : 0.9.0
-Release  : 16
+Release  : 17
 URL      : https://files.pythonhosted.org/packages/c0/79/406a9f56c435caaaca4a1c66397e4f63ecd48a72a6c4fc1d9ecdaac66acb/pyproject_metadata-0.9.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/c0/79/406a9f56c435caaaca4a1c66397e4f63ecd48a72a6c4fc1d9ecdaac66acb/pyproject_metadata-0.9.0.tar.gz
 Summary  : PEP 621 metadata parsing
